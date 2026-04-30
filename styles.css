@@ -1,0 +1,337 @@
+:root {
+  color-scheme: light;
+  --page-bg:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.85), transparent 28%),
+    linear-gradient(180deg, #f8f2e8 0%, #efe3d2 100%);
+  --ink: #221813;
+  --muted: #726258;
+  --surface: rgba(255, 250, 243, 0.82);
+  --border: rgba(50, 35, 26, 0.12);
+  --shadow: 0 18px 40px rgba(84, 56, 38, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background: var(--page-bg);
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 4.25rem 0 5rem;
+}
+
+.hero {
+  min-height: 36vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem 0 3rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.hero-copy {
+  margin: 0.75rem 0 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  min-height: 320px;
+  padding: 1.1rem;
+  border-radius: 26px;
+  border: 2px solid rgba(78, 54, 39, 0.1);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  background: var(--surface);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.06));
+  z-index: -1;
+}
+
+.card-body {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.corner-icon {
+  position: absolute;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.08));
+}
+
+.corner-icon--top {
+  top: 12px;
+  left: 12px;
+  width: 96px;
+  height: 96px;
+}
+
+.corner-icon--bottom {
+  right: 12px;
+  bottom: 12px;
+  width: 90px;
+  height: 90px;
+}
+
+.card h2 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 1.2rem;
+  line-height: 1.02;
+}
+
+.card p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.card footer {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  opacity: 0.72;
+}
+
+.card-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+  opacity: 0.82;
+}
+
+.card--empty {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.theme-halloween {
+  color: #17152b;
+  background:
+    radial-gradient(circle at top right, rgba(255, 201, 147, 0.14), transparent 30%),
+    linear-gradient(180deg, #2a1511 0%, #f2851e 100%);
+}
+
+.theme-halloween::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05)),
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 32%);
+}
+
+.theme-halloween .corner-icon--top {
+  background-image: url("./assets/icons/halloween-bat.svg");
+}
+
+.theme-halloween .corner-icon--bottom {
+  background-image: url("./assets/icons/halloween-ghost.svg");
+}
+
+.theme-christmas {
+  color: #fff9f5;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, #ba2235 0%, #2d7a58 100%);
+}
+
+.theme-christmas::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.1), transparent 28%);
+}
+
+.theme-christmas .corner-icon--top {
+  background-image: url("./assets/icons/christmas-santa-hat.svg");
+}
+
+.theme-christmas .corner-icon--bottom {
+  background-image: url("./assets/icons/christmas-snowflake.svg");
+}
+
+.theme-summer {
+  color: #16344c;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 30%),
+    linear-gradient(180deg, #89dcff 0%, #ffe07c 100%);
+}
+
+.theme-summer::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.14), transparent 32%);
+}
+
+.theme-summer .corner-icon--top {
+  background-image: url("./assets/icons/summer-sun.svg");
+}
+
+.theme-summer .corner-icon--bottom {
+  background-image: url("./assets/icons/summer-flower.svg");
+}
+
+.theme-y2k {
+  color: #17152b;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 24%),
+    linear-gradient(135deg, #ffc7ef 0%, #9eeeff 52%, #d7d1ff 100%);
+}
+
+.theme-y2k::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.09)),
+    radial-gradient(circle at center right, rgba(255, 255, 255, 0.22), transparent 28%);
+}
+
+.theme-y2k .corner-icon--top {
+  background-image: url("./assets/icons/y2k-star.svg");
+}
+
+.theme-y2k .corner-icon--bottom {
+  background-image: url("./assets/icons/y2k-heart.svg");
+}
+
+.theme-birthday {
+  color: #4a2443;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.34), transparent 28%),
+    linear-gradient(180deg, #ffd2ea 0%, #ffc77f 100%);
+}
+
+.theme-birthday::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1)),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.16), transparent 30%);
+}
+
+.theme-birthday .corner-icon--top {
+  background-image: url("./assets/icons/birthday-cake.svg");
+}
+
+.theme-birthday .corner-icon--bottom {
+  background-image: url("./assets/icons/birthday-confetti.svg");
+}
+
+.theme-spring {
+  color: #3b3a25;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.34), transparent 28%),
+    linear-gradient(180deg, #e7ffd5 0%, #ffd6e9 100%);
+}
+
+.theme-spring::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.08)),
+    radial-gradient(circle at center right, rgba(255, 255, 255, 0.16), transparent 28%);
+}
+
+.theme-spring .corner-icon--top {
+  background-image: url("./assets/icons/spring-daisy.svg");
+}
+
+.theme-spring .corner-icon--bottom {
+  background-image: url("./assets/icons/spring-butterfly.svg");
+}
+
+.theme-ocean {
+  color: #10364b;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 28%),
+    linear-gradient(180deg, #8fe4ff 0%, #4cb6d6 48%, #1e7fab 100%);
+}
+
+.theme-ocean::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06)),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.14), transparent 30%);
+}
+
+.theme-ocean .corner-icon--top {
+  background-image: url("./assets/icons/ocean-shell.svg");
+}
+
+.theme-ocean .corner-icon--bottom {
+  background-image: url("./assets/icons/ocean-starfish.svg");
+}
+
+.theme-starlight {
+  color: #fbf7ff;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 24%),
+    linear-gradient(180deg, #38417d 0%, #1f214e 100%);
+}
+
+.theme-starlight::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.1), transparent 28%);
+}
+
+.theme-starlight .corner-icon--top {
+  background-image: url("./assets/icons/starlight-moon.svg");
+}
+
+.theme-starlight .corner-icon--bottom {
+  background-image: url("./assets/icons/starlight-stars.svg");
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 1.25rem, 1120px);
+    padding-top: 2rem;
+  }
+
+  .hero {
+    min-height: 28vh;
+  }
+}
